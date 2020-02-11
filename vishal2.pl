@@ -1,7 +1,7 @@
 #!/usr/bin/perl
-use strict;use warning;
+use strict;use warnings;
 my$dna='AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
-my@i;
+my$i;
 my$mutant;
 srand(time|$$);
 $mutant=mutate($dna);
@@ -18,7 +18,7 @@ print"$mutant\n";
 }
 exit;
 sub mutate {
-my($dna)=a_;
+my($dna)=@_;
 my(@nucleotides)=('A','C','G','T');
 my($position)= randomposition($dna);
 my($newbase)=randomnucleotide(@nucleotides);
@@ -27,5 +27,13 @@ return$dna;
 }
 sub randomelement{
 my(@array)=@_;
-return$array [rand@array];
+return$array [rand @array];
+}
+sub randomnucleotide{
+my(@nucleotide)=('A','C','G','T');
+return randomelement(@nucleotide);
+}
+sub randomposition{
+my($string)=@_;
+return int(rand(length($string)));
 }
